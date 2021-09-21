@@ -1565,13 +1565,13 @@ use_custom_tcltk() {
 get_tcltk_flag_from() {
   IFS=$'\n'
   # parse input string into array
-  local opts_arr=( $(xargs -n1 <<<"$1") ) 
+  local opts_arr=( $(xargs -n1 <<<"$1") )
 
   # iterate through `opts_arr`, break if `--with-tcltk-libs=` was found.
   for opts in ${opts_arr[@]}; do
     # `--with-tcltk-libs=` must be the prefix.
     if [[ "$opts" == "--with-tcltk-libs="* ]]; then
-      # return 
+      # return
       echo "$opts"
       break
     fi
@@ -2135,7 +2135,11 @@ if [[ "$PYTHON_CONFIGURE_OPTS" == *"--enable-universalsdk"* ]]; then
     echo "python-build: universal installation is not supported." >&2
     exit 1
   fi
-  package_option python configure --enable-universalsdk=/ --with-universal-archs=intel
+  if is_arm64_apple; then
+    package_option python configure --enable-universalsdk --with-universal-archs=universal2
+  else
+    package_option python configure --enable-universalsdk=/ --with-universal-archs=intel
+  fi
 fi
 
 # Compile with `--enable-unicode=ucs4` by default (#257)
