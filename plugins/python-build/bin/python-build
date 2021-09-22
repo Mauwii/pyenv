@@ -2135,8 +2135,8 @@ if [[ "$PYTHON_CONFIGURE_OPTS" == *"--enable-universalsdk"* ]]; then
     echo "python-build: universal installation is not supported." >&2
     exit 1
   fi
-  if is_arm64_apple; then
-    package_option python configure --enable-universalsdk --with-universal-archs=universal2
+  if is_arm64_apple && [[ "$PYTHON_CONFIGURE_OPTS" == *"--with-universal-archs=universal2"* ]]; then
+    package_option python configure --enable-universalsdk=$(xcrun --show-sdk-path) --with-universal-archs=universal2
   else
     package_option python configure --enable-universalsdk=/ --with-universal-archs=intel
   fi
