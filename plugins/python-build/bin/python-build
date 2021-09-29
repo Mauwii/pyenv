@@ -858,8 +858,8 @@ build_package_jython_builder() {
   ( cd "dist" && build_package_jython )
 }
 
-build_package_pyston() {
-  # currently supported version 2.2 and upper
+build_package_pyston2.2() {
+  # currently supported version 2.2 and 2.3
   build_package_copy
   mkdir -p "${PREFIX_PATH}/bin" "${PREFIX_PATH}/lib"
   local bin
@@ -874,6 +874,11 @@ build_package_pyston() {
     fi
   done
   shopt -u nullglob
+}
+
+build_package_pyston() {
+  # currently supported version 2.3.1v2 and higher
+  build_package_copy
 }
 
 build_package_ironpython() {
