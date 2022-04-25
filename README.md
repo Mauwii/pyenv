@@ -181,7 +181,7 @@ For pyenv to install python correctly you should [**install the Python build dep
       brew update
       brew install pyenv
       ```
-   2. Then follow the rest of the post-installation steps under [Basic GitHub Checkout](https://github.com/pyenv/pyenv#basic-github-checkout), starting with #2 ("Configure your shell's environment for Pyenv").
+   2. Then follow the rest of the post-installation steps under [Basic GitHub Checkout](https://github.com/pyenv/pyenv#basic-github-checkout), starting with #&#8203;2 ("Configure your shell's environment for Pyenv").
 
    3. OPTIONAL. To fix `brew doctor`'s warning _""config" scripts exist outside your system or Homebrew directories"_
    
@@ -320,7 +320,7 @@ easy to fork and contribute any changes back upstream.
          to be a shell function (e.g. `shell` and Pyenv-Virtualenv's `activate`).
 
          ~~~bash
-         echo 'eval "$(pyenv init -)"'
+         eval "$(pyenv init -)"
          ~~~
          
          If you are installing Pyenv yourself as part of the batch job,
